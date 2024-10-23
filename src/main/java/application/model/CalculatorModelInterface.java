@@ -5,6 +5,8 @@ public interface CalculatorModelInterface {
     public void subtract( double x, double y );
     public void multiply( double x, double y );
     public void divide( double x, double y );
-    public void opposite( double x);
-    public void push();
+    //public void opposite( double x);
+    public void push(double value);
+    public void pop();
+    public void clear();
 }
