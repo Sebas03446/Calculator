@@ -6,6 +6,13 @@ public class CalculatorModel implements CalculatorModelInterface {
     private String acc;
     Stack<Double> memory;
 
+    public String getAcc() {
+        return acc;
+    }
+
+    public void setAcc(String acc) {
+        this.acc = acc;
+    }
     public CalculatorModel() {
         memory = new Stack<>();
         acc = "";

@@ -9,4 +9,6 @@ public interface CalculatorModelInterface {
     public void push(double value);
     public void pop();
     public void clear();
+    public void  setAcc(String acc);
+    public String getAcc();
 }
