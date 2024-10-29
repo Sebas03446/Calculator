@@ -10,16 +10,12 @@ public class CalculatorController implements CalculatorControllerInterface {
     public CalculatorController(CalculatorModelInterface model, CalculatorViewInterface view) {
         this.model = model;
         this.view = view;
+
     }
 
     public void handleNumberButton(String a){
-        String actualAcc = model.getAcc();
-        String newAcc = actualAcc + a;
-        model.setAcc(newAcc);
-        view.setInputTextField(newAcc);
+        model.setAcc(a);
     }
-
-
 
     public void change(String accu){
         view.setInputTextField(accu);

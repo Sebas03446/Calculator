@@ -25,7 +25,7 @@ public class Main extends Application {
 
 
         calculatorViewInterface.setController(calculatorControler);
-
+        calculatorModelInterface.setController(calculatorControler);
         // Initialize View and pass the controller to it
 
         calculatorViewInterface.start(primaryStage);
