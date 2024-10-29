@@ -2,6 +2,7 @@ package application.model;
 
 import application.controller.CalculatorControllerInterface;
 
+import java.util.List;
 import java.util.Stack;
 
 public class CalculatorModel implements CalculatorModelInterface {
@@ -19,7 +20,6 @@ public class CalculatorModel implements CalculatorModelInterface {
 
     public void setAcc(String acc) {
         this.acc = this.acc + acc;
-        System.out.println(this.acc);
         controller.change(this.acc);
     }
     public CalculatorModel() {
@@ -27,41 +27,58 @@ public class CalculatorModel implements CalculatorModelInterface {
         acc = "";
     }
 
-    public void add(double a, double b){
-        Double result = a + b;
-        memory.push(result);
-    }
-
-    public void subtract(double a, double b){
-        Double result = a - b;
-        memory.push(result);
-    }
-
-    public void multiply(double a, double b){
-        Double result = a * b;
-        memory.push(result);
-    }
-
-    public void divide(double a, double b){
-        Double result = a / b;
-        memory.push(result);
-    }
-
-    public void push(double a){
-        System.out.println("push");
-        memory.push(a);
-    }
-
-    public void pop(){
-        if(memory.isEmpty()){
+    public void add(){
+        Double a = pop();
+        if (a == null){
             return;
         }
 
-        memory.pop();
+        Double b = pop();
+        if (b == null){
+            push(a);
+            return;
+        }
+
+        push(a + b);
+    }
+
+    public void subtract(){}
+
+    public void multiply(){}
+    public void divide(){}
+
+    public void push(){
+        Double a = Double.parseDouble(this.acc);
+        memory.push(a);
+        restartAcc();
+
+        controller.change(getMemory());
+    }
+
+    public void push(Double a){
+        memory.push(a);
+        controller.change(getMemory());
+    }
+
+    public void restartAcc(){
+        this.acc = "";
+        controller.change(this.acc);
+    }
+
+    public Double pop(){
+        if(memory.isEmpty()){
+            return null;
+        }
+
+        return memory.pop();
     }
 
     public void clear(){
         memory.clear();
+    }
+
+    public List<Double> getMemory(){
+        return memory;
     }
 
 
