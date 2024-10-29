@@ -52,12 +52,12 @@ public class CalculatorModel implements CalculatorModelInterface {
         memory.push(a);
         restartAcc();
 
-        controller.change(getMemory());
+        controller.change(memory);
     }
 
     public void push(Double a){
         memory.push(a);
-        controller.change(getMemory());
+        controller.change(memory);
     }
 
     public void restartAcc(){
@@ -75,10 +75,6 @@ public class CalculatorModel implements CalculatorModelInterface {
 
     public void clear(){
         memory.clear();
-    }
-
-    public List<Double> getMemory(){
-        return memory;
     }
 
 
