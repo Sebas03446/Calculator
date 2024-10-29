@@ -1,5 +1,7 @@
 package application.model;
 
+import application.controller.CalculatorControllerInterface;
+
 public interface CalculatorModelInterface {
     public void add( double x, double y );
     public void subtract( double x, double y );
@@ -9,4 +11,7 @@ public interface CalculatorModelInterface {
     public void push(double value);
     public void pop();
     public void clear();
+    public void  setAcc(String acc);
+    public String getAcc();
+    public void setController(CalculatorControllerInterface controller);
 }

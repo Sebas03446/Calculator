@@ -9,29 +9,57 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
-public class CalculatorView {
-    private CalculatorControllerInterface controller;
+public class CalculatorView implements CalculatorViewInterface {
 
-    public CalculatorView(CalculatorControllerInterface controller) {
+
+    private CalculatorControllerInterface controller;
+    private TextField inputField = new TextField();
+
+    public void setController(CalculatorControllerInterface controller) {
         this.controller = controller;
     }
 
+    public String getInputTextField(){
+        return inputField.getText();
+    }
+
+    public void setInputTextField(String input){
+        inputField.setText(input);
+    }
+
+    public CalculatorView() {
+
+    }
+
     public void start(Stage primaryStage) {
-        // UI components
-        TextField inputField = new TextField();
+
+
         Button addButton = new Button("Add");
+        Button oneButton = new Button("1");
+        Button twoButton = new Button("2");
         Label resultLabel = new Label("Result: 0.0");
 
-        // Button click event
         addButton.setOnAction(e -> {
             String input = inputField.getText();
-            });
+            System.out.println(e.getEventType().getName());
+        });
 
-        // Layout
-        VBox layout = new VBox(10);
-        layout.getChildren().addAll(inputField, addButton, resultLabel);
+        oneButton.setOnAction(e ->{
+            controller.handleNumberButton("1");
 
-        // Scene setup
+        }      );
+
+        twoButton.setOnAction(e ->{
+            String input = inputField.getText();
+            System.out.println(e.getEventType().getName());
+        });
+
+
+
+
+        VBox layout = new VBox(5);
+        layout.getChildren().addAll(inputField, addButton, oneButton,twoButton, resultLabel);
+
         Scene scene = new Scene(layout, 300, 200);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Simple Calculator");
