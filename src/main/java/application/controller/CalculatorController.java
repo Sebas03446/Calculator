@@ -25,6 +25,12 @@ public class CalculatorController implements CalculatorControllerInterface {
 
     public void handleAddButton(){ model.add();}
 
+    public void handleSubstractButton(){model.subtract();}
+
+    public void handleMultiplyButton(){model.multiply();}
+
+    public void handleDivideButton(){model.divide();}
+
     public void handlePushButton(){model.push();}
 
    public void change(List<Double> stackData){

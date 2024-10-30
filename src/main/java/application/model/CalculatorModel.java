@@ -42,10 +42,46 @@ public class CalculatorModel implements CalculatorModelInterface {
         push(a + b);
     }
 
-    public void subtract(){}
+    public void subtract(){
+        Double a = pop();
+        if (a == null){
+            return;
+        }
 
-    public void multiply(){}
-    public void divide(){}
+        Double b = pop();
+        if (b == null){
+            return;
+        }
+
+        push(a - b);
+    }
+
+    public void multiply(){
+        Double a = pop();
+        if (a == null){
+            return;
+        }
+
+        Double b = pop();
+        if (b == null){
+            return;
+        }
+
+        push(a * b);
+    }
+    public void divide(){
+        Double a = pop();
+        if (a == null){
+            return;
+        }
+
+        Double b = pop();
+        if (b == null){
+            return;
+        }
+
+        push(a / b);
+    }
 
     public void push(){
         Double a = Double.parseDouble(this.acc);
@@ -75,6 +111,7 @@ public class CalculatorModel implements CalculatorModelInterface {
 
     public void clear(){
         memory.clear();
+        controller.change(memory);
     }
 
 

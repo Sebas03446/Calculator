@@ -41,6 +41,9 @@ public class CalculatorView implements CalculatorViewInterface {
 
     public void start(Stage primaryStage) {
         Button addButton = new Button("Add");
+        Button subtractButton = new Button("Subtract");
+        Button multiplyButton = new Button("Multiply");
+        Button divideButton = new Button("Divide");
         Button pushButton = new Button("Push");
         Button oneButton = new Button("1");
         Button twoButton = new Button("2");
@@ -51,6 +54,18 @@ public class CalculatorView implements CalculatorViewInterface {
 
         addButton.setOnAction(e -> {
             controller.handleAddButton();
+        });
+
+        subtractButton.setOnAction(e -> {
+            controller.handleSubstractButton();
+        });
+
+        multiplyButton.setOnAction(e -> {
+            controller.handleMultiplyButton();
+        });
+
+        divideButton.setOnAction(e -> {
+            controller.handleDivideButton();
         });
 
         pushButton.setOnAction(e -> {
@@ -66,7 +81,7 @@ public class CalculatorView implements CalculatorViewInterface {
         });
 
         VBox layout = new VBox(10); // Increase spacing for better look
-        layout.getChildren().addAll(pileView, inputField, addButton, pushButton, oneButton, twoButton, resultLabel);
+        layout.getChildren().addAll(pileView, inputField, addButton, subtractButton, multiplyButton, divideButton ,pushButton, oneButton, twoButton, resultLabel);
 
         Scene scene = new Scene(layout, 300, 350); // Increased height for better spacing
         primaryStage.setScene(scene);
