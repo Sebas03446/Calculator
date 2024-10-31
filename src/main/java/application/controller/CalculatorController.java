@@ -25,7 +25,7 @@ public class CalculatorController implements CalculatorControllerInterface {
 
     public void handleAddButton(){ model.add();}
 
-    public void handleSubstractButton(){model.subtract();}
+    public void handleSubtractButton(){model.subtract();}
 
     public void handleMultiplyButton(){model.multiply();}
 
