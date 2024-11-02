@@ -74,35 +74,35 @@ public class CalculatorView implements CalculatorViewInterface {
         });
 
         Button oppositeButton = new Button("+/-");
-        oppositeButton.setMinSize(50, 50);
+        oppositeButton.setMinSize(60, 50);
         oppositeButton.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         oppositeButton.setOnAction(e -> {
             controller.handleOppositeButton();
         });
 
         Button pushButton = new Button("Push");
-        pushButton.setMinSize(50, 50);
+        pushButton.setMinSize(60, 50);
         pushButton.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         pushButton.setOnAction(e -> {
             controller.handlePushButton();
         });
 
         Button popButton = new Button("Pop");
-        popButton.setMinSize(50, 50);
+        popButton.setMinSize(60, 50);
         popButton.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         popButton.setOnAction(e -> {
             controller.handlePopButton();
         });
 
         Button clearButton = new Button("Clear");
-        clearButton.setMinSize(50, 50);
+        clearButton.setMinSize(60, 50);
         clearButton.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         clearButton.setOnAction(e -> {
             controller.handleClearButton();
         });
 
         Button swapButton = new Button("Swap");
-        swapButton.setMinSize(50, 50);
+        swapButton.setMinSize(60, 50);
         swapButton.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         swapButton.setOnAction(e -> {
             controller.handleSwapButton();

@@ -19,7 +19,7 @@ public class CalculatorModel implements CalculatorModelInterface {
     }
 
     public void setAcc(String acc) {
-        if (this.acc.isEmpty()  && acc.equals(".")  ) {
+        if (this.acc.isEmpty() && acc.equals(".") ) {
             return;
         }
         this.acc = this.acc + acc;
@@ -100,7 +100,7 @@ public class CalculatorModel implements CalculatorModelInterface {
     }
 
     public void push(){
-        if(this.acc.isEmpty()){
+        if(this.acc.isEmpty() || this.acc.equals(".") || this.acc.equals("-")){
             return;
         }
 
@@ -131,7 +131,7 @@ public class CalculatorModel implements CalculatorModelInterface {
     }
 
     public void clear(){
-        memory.clear();
+        this.acc = "";
         controller.change(memory);
     }
 
