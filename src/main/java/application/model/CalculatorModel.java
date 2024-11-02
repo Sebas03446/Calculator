@@ -2,6 +2,7 @@ package application.model;
 
 import application.controller.CalculatorControllerInterface;
 
+import java.util.List;
 import java.util.Stack;
 
 public class CalculatorModel implements CalculatorModelInterface {
@@ -18,8 +19,10 @@ public class CalculatorModel implements CalculatorModelInterface {
     }
 
     public void setAcc(String acc) {
+        if (this.acc.isEmpty() && acc.equals(".") ) {
+            return;
+        }
         this.acc = this.acc + acc;
-        System.out.println(this.acc);
         controller.change(this.acc);
     }
     public CalculatorModel() {
@@ -27,42 +30,122 @@ public class CalculatorModel implements CalculatorModelInterface {
         acc = "";
     }
 
-    public void add(double a, double b){
-        Double result = a + b;
-        memory.push(result);
-    }
-
-    public void subtract(double a, double b){
-        Double result = a - b;
-        memory.push(result);
-    }
-
-    public void multiply(double a, double b){
-        Double result = a * b;
-        memory.push(result);
-    }
-
-    public void divide(double a, double b){
-        Double result = a / b;
-        memory.push(result);
-    }
-
-    public void push(double a){
-        System.out.println("push");
-        memory.push(a);
-    }
-
-    public void pop(){
-        if(memory.isEmpty()){
+    public void add(){
+        Double a = pop();
+        if (a == null){
             return;
         }
 
-        memory.pop();
+        Double b = pop();
+        if (b == null){
+            push(a);
+            return;
+        }
+
+        push(a + b);
+    }
+
+    public void opposite() {
+        if (this.acc.startsWith("-")) {
+            this.acc = this.acc.substring(1);
+        } else {
+            this.acc = "-" + this.acc;
+        }
+
+        controller.change(this.acc);
+    }
+
+    public void subtract(){
+        Double a = pop();
+        if (a == null){
+            return;
+        }
+
+        Double b = pop();
+        if (b == null){
+            push(a);
+            return;
+        }
+
+        push(a - b);
+    }
+
+    public void multiply(){
+        Double a = pop();
+        if (a == null){
+            return;
+        }
+
+        Double b = pop();
+        if (b == null){
+            push(a);
+            return;
+        }
+
+        push(a * b);
+    }
+    public void divide(){
+        Double a = pop();
+        if (a == null){
+            return;
+        }
+
+        Double b = pop();
+        if (b == null){
+            push(a);
+            return;
+        }
+
+        push(a / b);
+    }
+
+    public void push(){
+        if(this.acc.isEmpty() || this.acc.equals(".") || this.acc.equals("-")){
+            return;
+        }
+
+        Double a = Double.parseDouble(this.acc);
+        memory.push(a);
+        restartAcc();
+
+        controller.change(memory);
+    }
+
+    public void push(Double a){
+        memory.push(a);
+        controller.change(memory);
+    }
+
+    public void restartAcc(){
+        this.acc = "";
+        controller.change(this.acc);
+    }
+
+    public Double pop(){
+        if(memory.isEmpty()){
+            return null;
+        }
+        Double value = memory.pop();
+        controller.change(memory);
+        return value;
     }
 
     public void clear(){
-        memory.clear();
+        this.acc = "";
+        controller.change(memory);
     }
 
+    public void swap(){
+        if(memory.isEmpty() || memory.size() < 2){
+            return;
+        }
 
+        Double a = pop();
+        Double b = pop();
+
+        push(a);
+        push(b);
+
+        controller.change(memory);
+    }
 }
