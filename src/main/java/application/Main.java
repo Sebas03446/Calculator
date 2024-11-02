@@ -16,8 +16,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        System.out.println("Hello World");
-        // Initialize Model and Controller
         CalculatorModelInterface calculatorModelInterface = new CalculatorModel();
         CalculatorViewInterface calculatorViewInterface = new CalculatorView();
 
@@ -26,7 +24,6 @@ public class Main extends Application {
 
         calculatorViewInterface.setController(calculatorControler);
         calculatorModelInterface.setController(calculatorControler);
-        // Initialize View and pass the controller to it
 
         calculatorViewInterface.start(primaryStage);
     }

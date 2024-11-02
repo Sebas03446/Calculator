@@ -66,11 +66,32 @@ public class CalculatorView implements CalculatorViewInterface {
             });
         }
 
+        Button commaButton = new Button(",");
+        commaButton.setMinSize(50, 50);
+        commaButton.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        commaButton.setOnAction(e -> {
+            controller.handleNumberButton(".");
+        });
+
         Button pushButton = new Button("Push");
         pushButton.setMinSize(50, 50);
         pushButton.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         pushButton.setOnAction(e -> {
             controller.handlePushButton();
+        });
+
+        Button clearButton = new Button("Clear");
+        clearButton.setMinSize(50, 50);
+        clearButton.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        clearButton.setOnAction(e -> {
+            controller.handleClearButton();
+        });
+
+        Button popButton = new Button("Pop");
+        popButton.setMinSize(50, 50);
+        popButton.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        popButton.setOnAction(e -> {
+            controller.handlePopButton();
         });
 
         operatorButtons[0].setOnAction(e -> controller.handleDivideButton());
@@ -90,42 +111,46 @@ public class CalculatorView implements CalculatorViewInterface {
 
         // Set uniform column widths
         ColumnConstraints column = new ColumnConstraints();
-        column.setPercentWidth(25);
-        grid.getColumnConstraints().addAll(column, column, column, column);
+        column.setPercentWidth(20);
+        grid.getColumnConstraints().addAll(column, column, column, column, column);
 
-        // First row
+        // First row (numbers 7, 8, 9, divide operator)
         grid.add(numberButtons[7], 0, 0);
         grid.add(numberButtons[8], 1, 0);
         grid.add(numberButtons[9], 2, 0);
         grid.add(operatorButtons[0], 3, 0); // Divide
 
-        // Second row
+        // Second row (numbers 4, 5, 6, multiply operator)
         grid.add(numberButtons[4], 0, 1);
         grid.add(numberButtons[5], 1, 1);
         grid.add(numberButtons[6], 2, 1);
         grid.add(operatorButtons[1], 3, 1); // Multiply
 
-        // Third row
+        // Third row (numbers 1, 2, 3, subtract operator)
         grid.add(numberButtons[1], 0, 2);
         grid.add(numberButtons[2], 1, 2);
         grid.add(numberButtons[3], 2, 2);
         grid.add(operatorButtons[2], 3, 2); // Subtract
 
-        // Fourth row
+        // Fourth row (number 0, comma, add operator)
         grid.add(numberButtons[0], 0, 3);
-        grid.add(pushButton, 1, 3);
-        // Empty placeholder to maintain grid structure
-        grid.add(new Pane(), 2, 3);
+        grid.add(commaButton, 1, 3);
         grid.add(operatorButtons[3], 3, 3); // Add
+
+        // Fifth row (Push, Pop, Clear buttons)
+        grid.add(pushButton, 4, 0);  // Push button in fifth column, first row
+        grid.add(popButton, 4, 1);   // Pop button in fifth column, second row
+        grid.add(clearButton, 4, 2); // Clear button in fifth column, third row
 
         // Create the main layout and add components
         VBox layout = new VBox(10);
         layout.getChildren().addAll(pileView, inputField, grid);
         layout.setAlignment(Pos.CENTER);
 
-        Scene scene = new Scene(layout, 300, 400);
+        Scene scene = new Scene(layout, 400, 400);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Simple Calculator");
+        primaryStage.setTitle("Calculatrice");
         primaryStage.show();
     }
+
 }

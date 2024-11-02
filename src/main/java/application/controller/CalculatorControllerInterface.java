@@ -12,4 +12,6 @@ public interface CalculatorControllerInterface {
     public void handleMultiplyButton();
     public void handleDivideButton();
     public void handlePushButton();
+    public void handlePopButton();
+    public void handleClearButton();
 }

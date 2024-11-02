@@ -19,6 +19,9 @@ public class CalculatorModel implements CalculatorModelInterface {
     }
 
     public void setAcc(String acc) {
+        if (this.acc.isEmpty()  && acc.equals(".")  ) {
+            return;
+        }
         this.acc = this.acc + acc;
         controller.change(this.acc);
     }
@@ -50,6 +53,7 @@ public class CalculatorModel implements CalculatorModelInterface {
 
         Double b = pop();
         if (b == null){
+            push(a);
             return;
         }
 
@@ -64,6 +68,7 @@ public class CalculatorModel implements CalculatorModelInterface {
 
         Double b = pop();
         if (b == null){
+            push(a);
             return;
         }
 
@@ -77,6 +82,7 @@ public class CalculatorModel implements CalculatorModelInterface {
 
         Double b = pop();
         if (b == null){
+            push(a);
             return;
         }
 
@@ -84,6 +90,10 @@ public class CalculatorModel implements CalculatorModelInterface {
     }
 
     public void push(){
+        if(this.acc.isEmpty()){
+            return;
+        }
+
         Double a = Double.parseDouble(this.acc);
         memory.push(a);
         restartAcc();
@@ -105,14 +115,13 @@ public class CalculatorModel implements CalculatorModelInterface {
         if(memory.isEmpty()){
             return null;
         }
-
-        return memory.pop();
+        Double value = memory.pop();
+        controller.change(memory);
+        return value;
     }
 
     public void clear(){
         memory.clear();
         controller.change(memory);
     }
-
-
 }

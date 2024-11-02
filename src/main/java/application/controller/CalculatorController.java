@@ -36,4 +36,8 @@ public class CalculatorController implements CalculatorControllerInterface {
    public void change(List<Double> stackData){
         view.pileViewUpdated(stackData);
    }
+
+   public void handleClearButton(){model.clear();}
+
+    public void handlePopButton(){model.pop();}
 }
