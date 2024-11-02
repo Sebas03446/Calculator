@@ -45,6 +45,16 @@ public class CalculatorModel implements CalculatorModelInterface {
         push(a + b);
     }
 
+    public void opposite() {
+        if (this.acc.startsWith("-")) {
+            this.acc = this.acc.substring(1);
+        } else {
+            this.acc = "-" + this.acc;
+        }
+
+        controller.change(this.acc);
+    }
+
     public void subtract(){
         Double a = pop();
         if (a == null){
@@ -122,6 +132,20 @@ public class CalculatorModel implements CalculatorModelInterface {
 
     public void clear(){
         memory.clear();
+        controller.change(memory);
+    }
+
+    public void swap(){
+        if(memory.isEmpty() || memory.size() < 2){
+            return;
+        }
+
+        Double a = pop();
+        Double b = pop();
+
+        push(a);
+        push(b);
+
         controller.change(memory);
     }
 }

@@ -40,4 +40,8 @@ public class CalculatorController implements CalculatorControllerInterface {
    public void handleClearButton(){model.clear();}
 
     public void handlePopButton(){model.pop();}
+
+    public void handleOppositeButton(){model.opposite();}
+
+    public void handleSwapButton(){model.swap();}
 }

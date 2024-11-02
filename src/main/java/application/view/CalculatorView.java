@@ -73,11 +73,25 @@ public class CalculatorView implements CalculatorViewInterface {
             controller.handleNumberButton(".");
         });
 
+        Button oppositeButton = new Button("+/-");
+        oppositeButton.setMinSize(50, 50);
+        oppositeButton.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        oppositeButton.setOnAction(e -> {
+            controller.handleOppositeButton();
+        });
+
         Button pushButton = new Button("Push");
         pushButton.setMinSize(50, 50);
         pushButton.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         pushButton.setOnAction(e -> {
             controller.handlePushButton();
+        });
+
+        Button popButton = new Button("Pop");
+        popButton.setMinSize(50, 50);
+        popButton.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        popButton.setOnAction(e -> {
+            controller.handlePopButton();
         });
 
         Button clearButton = new Button("Clear");
@@ -87,11 +101,11 @@ public class CalculatorView implements CalculatorViewInterface {
             controller.handleClearButton();
         });
 
-        Button popButton = new Button("Pop");
-        popButton.setMinSize(50, 50);
-        popButton.setFont(Font.font("Arial", FontWeight.BOLD, 14));
-        popButton.setOnAction(e -> {
-            controller.handlePopButton();
+        Button swapButton = new Button("Swap");
+        swapButton.setMinSize(50, 50);
+        swapButton.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        swapButton.setOnAction(e -> {
+            controller.handleSwapButton();
         });
 
         operatorButtons[0].setOnAction(e -> controller.handleDivideButton());
@@ -132,15 +146,17 @@ public class CalculatorView implements CalculatorViewInterface {
         grid.add(numberButtons[3], 2, 2);
         grid.add(operatorButtons[2], 3, 2); // Subtract
 
-        // Fourth row (number 0, comma, add operator)
+        // Fourth row (number 0, comma, opposite, add operator)
         grid.add(numberButtons[0], 0, 3);
         grid.add(commaButton, 1, 3);
+        grid.add(oppositeButton, 2, 3);  // Opposite button next to comma button
         grid.add(operatorButtons[3], 3, 3); // Add
 
-        // Fifth row (Push, Pop, Clear buttons)
+        // Fifth column (Push, Pop, Clear, Swap buttons)
         grid.add(pushButton, 4, 0);  // Push button in fifth column, first row
         grid.add(popButton, 4, 1);   // Pop button in fifth column, second row
         grid.add(clearButton, 4, 2); // Clear button in fifth column, third row
+        grid.add(swapButton, 4, 3);  // Swap button in fifth column, fourth row
 
         // Create the main layout and add components
         VBox layout = new VBox(10);
@@ -152,5 +168,6 @@ public class CalculatorView implements CalculatorViewInterface {
         primaryStage.setTitle("Calculatrice");
         primaryStage.show();
     }
+
 
 }

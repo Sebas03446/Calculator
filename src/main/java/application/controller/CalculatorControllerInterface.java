@@ -14,4 +14,6 @@ public interface CalculatorControllerInterface {
     public void handlePushButton();
     public void handlePopButton();
     public void handleClearButton();
+    public void handleOppositeButton();
+    public void handleSwapButton();
 }

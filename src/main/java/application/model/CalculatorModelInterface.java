@@ -7,11 +7,12 @@ public interface CalculatorModelInterface {
     public void subtract(  );
     public void multiply(  );
     public void divide( );
-    //public void opposite( double x);
+    public void opposite();
     public void push();
     public Double pop();
     public void clear();
     public void  setAcc(String acc);
     public String getAcc();
     public void setController(CalculatorControllerInterface controller);
+    public void swap();
 }
