@@ -19,11 +19,11 @@ public class Main extends Application {
         CalculatorModelInterface calculatorModelInterface = new CalculatorModel();
         CalculatorViewInterface calculatorViewInterface = new CalculatorView();
 
-        CalculatorControllerInterface calculatorControler = new CalculatorController(calculatorModelInterface,calculatorViewInterface);
+        CalculatorControllerInterface calculatorController = new CalculatorController(calculatorModelInterface,calculatorViewInterface);
 
 
-        calculatorViewInterface.setController(calculatorControler);
-        calculatorModelInterface.setController(calculatorControler);
+        calculatorViewInterface.setController(calculatorController);
+        calculatorModelInterface.setController(calculatorController);
 
         calculatorViewInterface.start(primaryStage);
     }
