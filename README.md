@@ -23,4 +23,9 @@ This project is a calculator using Reverse Polish Notation (RPN). The project fo
    ```
    cd Calculator
    ```
-To do..
+3. Download JavaFX
+4. Execute jar file
+    ```
+    java --module-path path/javafx-sdk-23.0.1/lib --add-modules javafx.controls,javafx.fxml -jar ./Calculator.jar 
+    ```
+   `
