@@ -149,14 +149,14 @@ public class CalculatorView implements CalculatorViewInterface {
         // Fourth row (number 0, comma, opposite, add operator)
         grid.add(numberButtons[0], 0, 3);
         grid.add(commaButton, 1, 3);
-        grid.add(oppositeButton, 2, 3);  // Opposite button next to comma button
+        grid.add(oppositeButton, 2, 3);
         grid.add(operatorButtons[3], 3, 3); // Add
 
         // Fifth column (Push, Pop, Clear, Swap buttons)
-        grid.add(pushButton, 4, 0);  // Push button in fifth column, first row
-        grid.add(popButton, 4, 1);   // Pop button in fifth column, second row
-        grid.add(clearButton, 4, 2); // Clear button in fifth column, third row
-        grid.add(swapButton, 4, 3);  // Swap button in fifth column, fourth row
+        grid.add(pushButton, 4, 0);
+        grid.add(popButton, 4, 1);
+        grid.add(clearButton, 4, 2);
+        grid.add(swapButton, 4, 3);
 
         // Create the main layout and add components
         VBox layout = new VBox(10);
